@@ -1,0 +1,112 @@
+:root {
+  /* Light Mode Colors */
+  --bg-color: #f4f4f4;
+  --text-color: #333;
+  --container-bg-color: #fff;
+  --button-bg-color: #007bff;
+  --button-hover-bg-color: #0056b3;
+  --table-header-bg-color: #007bff;
+  --table-header-text-color: #fff;
+  --table-row-hover-color: #f1f1f1;
+  --image-border-color: rgba(0, 0, 0, 0.1);
+}
+
+[data-theme="dark"] {
+  /* Dark Mode Colors */
+  --bg-color: #1e1e1e;
+  --text-color: #f4f4f4;
+  --container-bg-color: #2c2c2c;
+  --button-bg-color: #4a90e2;
+  --button-hover-bg-color: #357ab7;
+  --table-header-bg-color: #4a90e2;
+  --table-header-text-color: #fff;
+  --table-row-hover-color: #333;
+  --image-border-color: rgba(255, 255, 255, 0.1);
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Arial', sans-serif;
+  background-color: var(--bg-color);
+  color: var(--text-color);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+.container {
+  background-color: var(--container-bg-color);
+  padding: 20px;
+  max-width: 800px;
+  width: 100%;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px var(--image-border-color);
+}
+
+h2 {
+  text-align: center;
+  margin-bottom: 20px;
+  color: var(--button-bg-color);
+}
+
+.upload-section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 30px;
+}
+
+.upload-button {
+  display: inline-block;
+  padding: 10px 20px;
+  font-size: 16px;
+  color: #fff;
+  background-color: var(--button-bg-color);
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.upload-button:hover {
+  background-color: var(--button-hover-bg-color);
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+  margin-top: 20px;
+  border-radius: 8px;
+  box-shadow: 0 4px 6px var(--image-border-color);
+}
+
+.table-container {
+  margin-top: 30px;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 10px;
+}
+
+th, td {
+  padding: 12px;
+  text-align: left;
+  border-bottom: 1px solid #ddd;
+}
+
+th {
+  background-color: var(--table-header-bg-color);
+  color: var(--table-header-text-color);
+}
+
+tr:hover {
+  background-color: var(--table-row-hover-color);
+}
