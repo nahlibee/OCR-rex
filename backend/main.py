@@ -15,29 +15,7 @@ def get_infos():
     return jsonify({"infos": json_infos})
 
 
-@app.route("/create_info", methods=["POST"])
-def create_info():
-    
-            
-        liste=reader_front('save_pic.jpg')
-        name = liste[0]
-        adress = liste[3]
-        dob = liste[1]
-        cin=liste[3]
-        if not name or not adress or not dob:
-            return (
-                jsonify({"message": "You must include a name, adress and dob and x"}),
-                400,
-            )
 
-        new_info = Info(name=name, adress=adress, dob=dob,cin=cin)
-        try:
-            db.session.add(new_info)
-            db.session.commit()
-        except Exception as e:
-            return jsonify({"message": str(e)}), 400
-
-        return jsonify({"message": "User created!"}), 201
 
 
 @app.route("/update_info/<int:user_id>", methods=["PATCH"])
@@ -95,6 +73,8 @@ def work():
     try:
         db.session.add(new_info)
         db.session.commit()
+        os.remove(r'C:\Users\yahya\Desktop\OCR rex\backend\images\front.jpg')
+        os.remove(r'C:\Users\yahya\Desktop\OCR rex\backend\images\back.jpg')
     except Exception as e:
         return jsonify({"message": str(e)}), 400
 

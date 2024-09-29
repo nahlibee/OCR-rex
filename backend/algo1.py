@@ -34,7 +34,7 @@ def reader_front(img_path):
     #select only the high confidence text
     confident=[]
     for res in result[0]:
-        if res[1][1]>0.7:
+        if res[1][1]>0.89:
             confident.append(res[1][0])
             
 

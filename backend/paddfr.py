@@ -9,7 +9,7 @@ import re
 
 
 
-img_path = r'C:\Users\yahya\Desktop\OCR rex\ressources\inputs\cinn.jpg'
+img_path = r'C:\Users\yahya\Desktop\OCR rex\kl.jpg'
 
 img = cv2.imread(img_path)
 
@@ -38,7 +38,7 @@ scores = [res[1][1] for res in result[0]]
 #select only the high confidence text
 confident=[]
 for res in result[0]:
-    if res[1][1]>0.7:
+    if res[1][1]>0.89:
         confident.append(res[1][0])
         
 
