@@ -2,11 +2,14 @@ import { useState, useEffect } from "react";
 import InfoList from "./InfoList";
 import "./App.css";
 import InfoForm from "./InfoForm";
-import Upload from "./ImageUpload";
+import Upload1 from "./ImageUpload1";
+import Upload2 from "./ImageUpload2";
 function App() {
   const [infos, setInfos] = useState([]);
   const [isModalOpen, setIsModalOpen] = useState(false)
   const [currentInfo, setCurrentInfo] = useState({})
+  const [isLoading, setIsLoading] = useState(false);
+  const [err, setErr] = useState('');
 
   useEffect(() => {
     fetchInfos()
@@ -57,13 +60,52 @@ function App() {
     }
   }, [darkMode]);
 
+  const handleClick = async () => {
+    setIsLoading(true);
+
+    try {
+      const response = await fetch('http://localhost:5000/work', {
+        method: 'GET',
+        headers: {
+          Accept: 'application/json',
+        },
+      });
+
+      if (!response.ok) {
+        throw new Error(`Error! status: ${response.status}`);
+      }
+
+      const result = await response.json();
+
+      console.log('result is: ', JSON.stringify(result, null, 4));
+
+      setData(result);
+    } catch (err) {
+      setErr(err.message);
+    } finally {
+      setIsLoading(false);
+      fetchInfos()
+    }
+  };
+
+
+
   return (
     <>
+    <div className="container"><div className='upload-section'>
+      <Upload1  />
+      <Upload2  />
+      </div>
+    
     <div className="container">
-      <Upload  />
+      
+      
+      <button className="upload-button" onClick={handleClick}>upload</button>
+
+      {isLoading && <h2>Loading...</h2>}
       <InfoList class='table container' infos={infos} updateInfo={openEditModal} updateCallback={onUpdate} />
       
-      </div>
+      </div></div>
       {/* Dark mode toggle button */}
       <div style={{ textAlign: "center", marginTop: "20px" }}>
         <button className="upload-button" onClick={toggleDarkMode}>

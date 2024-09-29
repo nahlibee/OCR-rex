@@ -1,6 +1,6 @@
 import { Component } from "react";
 
-class Upload extends Component {
+class Upload1 extends Component {
     constructor(props) {
         super(props);
         this.state = {
@@ -16,10 +16,10 @@ class Upload extends Component {
         }
         
         // Uncomment this if you wish to preview the image right after selection
-        // this.setState({
-        //     file: URL.createObjectURL(event.target.files[0]),
-        //     uploading: true
-        // });
+         this.setState({
+             file: URL.createObjectURL(event.target.files[0]),
+             uploading: true
+         });
 
         // Create a FormData to POST to backend
         const files = Array.from(event.target.files);
@@ -27,7 +27,7 @@ class Upload extends Component {
         formData.append("file", files[0]); // key - value
 
         // Send to Flask
-        const response = await fetch(`http://localhost:5000/uplaod-image`, {
+        const response = await fetch(`http://localhost:5000/upload-image1`, {
             method: 'POST',
             body: formData,
             contentType: false,
@@ -60,8 +60,8 @@ class Upload extends Component {
 
     render() {
         return (
-            <div>
-                <input className='upload-button' type="file" onChange={this.handleChange} />
+            <div >
+                <input  type="file" onChange={this.handleChange} />
                 <br />
                 { this.state.file && <img src={this.state.file} alt="jeye"/> }
             </div>
@@ -69,4 +69,4 @@ class Upload extends Component {
     }
 }
 
-export default Upload;
+export default Upload1;

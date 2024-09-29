@@ -1,5 +1,6 @@
 import os
-from flask import render_template, request, jsonify,redirect, flash, url_for,Response
+from flask import render_template, request, jsonify,redirect, flash, send_file, url_for,Response
+from algo2 import reader_back
 from config import app,db
 from models import Info
 from werkzeug.utils import secure_filename
@@ -79,32 +80,13 @@ def delete_info(user_id):
 
 
 
-@app.route('/uplaod-image', methods=['POST'])
-def index():
-    """
-    POST route handler that accepts an image, manipulates it and returns a JSON containing a possibly different image with more fields
-    """
-    # Read image from request and write to server's file system
-    data = request.files['file'] 
-    data.save('save_pic.jpg')
+@app.route('/work', methods=['GET'])
+def work():
     
-
-
-    # Do something with the image e.g. transform, crop, scale, computer vision detection
-    # some_function_you_want()
-
-    # Return the original/manipulated image with more optional data as JSON
-    #saved_img = open('save_pic.jpg', 'rb').read() # Read as binary
-    #saved_img_b64 = base64.b64encode(saved_img).decode('utf-8') # UTF-8 can be converted to JSON
-    #response = {}
-    #response['data'] = saved_img_b64
-    #response['more_fields'] = 'more data' # Can return values such as Machine Learning accuracy or precision
-    
-    # If only the image is required, you can use send_file instead
-    # return send_file('save_pic.jpg', mimetype='image/jpg') 
-    liste=reader_front(r'C:\Users\yahya\Desktop\OCR rex\save_pic.jpg')
+    liste=reader_front(r'C:\Users\yahya\Desktop\OCR rex\backend\images\front.jpg')
+    liste2=reader_back(r'C:\Users\yahya\Desktop\OCR rex\backend\images\back.jpg')
     name = liste[0]
-    adress = liste[1]
+    adress = liste2
     dob = liste[2]
     cin=liste[3]
     
@@ -117,6 +99,57 @@ def index():
         return jsonify({"message": str(e)}), 400
 
     return jsonify({"message": "User created!"}), 201
+    #return Response(json.dumps(response))
+
+@app.route('/upload-image1', methods=['POST'])
+def index1():
+    """
+    POST route handler that accepts an image, manipulates it and returns a JSON containing a possibly different image with more fields
+    """
+    # Read image from request and write to server's file system
+    data = request.files['file'] 
+    data.save(r'C:\Users\yahya\Desktop\OCR rex\backend\images\front.jpg')
+    
+
+
+    # Do something with the image e.g. transform, crop, scale, computer vision detection
+    # some_function_you_want()
+
+    # Return the original/manipulated image with more optional data as JSON
+    #saved_img = open('save_pic1.jpg', 'rb').read() # Read as binary
+    #saved_img_b64 = base64.b64encode(saved_img).decode('utf-8') # UTF-8 can be converted to JSON
+    #response = {}
+    #response['data'] = saved_img_b64
+    #response['more_fields'] = 'more data' # Can return values such as Machine Learning accuracy or precision
+    
+    # If only the image is required, you can use send_file instead
+    return send_file(r'C:\Users\yahya\Desktop\OCR rex\backend\images\front.jpg', mimetype='image/jpg') 
+    
+    #return Response(json.dumps(response))
+@app.route('/upload-image2', methods=['POST'])
+def index2():
+    """
+    POST route handler that accepts an image, manipulates it and returns a JSON containing a possibly different image with more fields
+    """
+    # Read image from request and write to server's file system
+    data = request.files['file'] 
+    data.save(r'C:\Users\yahya\Desktop\OCR rex\backend\images\back.jpg')
+    
+
+
+    # Do something with the image e.g. transform, crop, scale, computer vision detection
+    # some_function_you_want()
+
+    # Return the original/manipulated image with more optional data as JSON
+    #saved_img = open('save_pic1.jpg', 'rb').read() # Read as binary
+    #saved_img_b64 = base64.b64encode(saved_img).decode('utf-8') # UTF-8 can be converted to JSON
+    #response = {}
+    #response['data'] = saved_img_b64
+    #response['more_fields'] = 'more data' # Can return values such as Machine Learning accuracy or precision
+    
+    # If only the image is required, you can use send_file instead
+    return send_file(r'C:\Users\yahya\Desktop\OCR rex\backend\images\back.jpg', mimetype='images/jpg') 
+    
     #return Response(json.dumps(response))
 
 if __name__ == "__main__":
