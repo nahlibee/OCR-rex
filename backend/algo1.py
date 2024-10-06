@@ -4,7 +4,7 @@ import matplotlib.pyplot as plt
 import spacy
 from gliner_spacy.pipeline import GlinerSpacy
 import re
-
+import os
 def reader_front(img_path):
 
     # Load image
@@ -21,8 +21,9 @@ def reader_front(img_path):
     cv2.destroyAllWindows()
 
     # Save the cropped image
-    cv2.imwrite("cropped_image.jpg", crop)
-    img = cv2.imread("cropped_image.jpg")
+    cv2.imwrite(r"C:\Users\yahya\Desktop\OCR rex\backend\images\cropped_image.jpg", crop)
+    img = cv2.imread(r"C:\Users\yahya\Desktop\OCR rex\backend\images\cropped_image.jpg")
+    os.remove(r"C:\Users\yahya\Desktop\OCR rex\backend\images\cropped_image.jpg")
     # Initialize PaddleOCR
     ocr = PaddleOCR(lang='en')
 
