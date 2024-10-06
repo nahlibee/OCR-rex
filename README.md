@@ -28,7 +28,7 @@ This web application enables users to upload an image of an ID card and extract 
 
 Here’s what the app looks like:
 
-![App Screenshot](\screenshot.png)
+![App Screenshot](/screenshot.png)
 
 ---
 
