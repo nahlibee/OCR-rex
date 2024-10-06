@@ -28,7 +28,7 @@ This web application enables users to upload an image of an ID card and extract 
 
 Here’s what the app looks like:
 
-![App Screenshot](https://via.placeholder.com/600x300.png?text=App+Screenshot)
+![App Screenshot](C:\Users\yahya\Desktop\OCR rex\screenshot.png)
 
 ---
 
