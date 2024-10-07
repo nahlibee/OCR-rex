@@ -1,0 +1,7 @@
+spacy==3.7.5
+paddleocr==2.8.1
+numpy==1.23.5
+opencv-python==4.9.0.80
+gliner.spacy==0.0.10
+flask==2.2.5
+werkzeug==2.2.3
