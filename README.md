@@ -1,8 +1,8 @@
-# 📇 ID Card Data Extraction App
+# 📇 ID Card Data Extraction App - OCR-rex
 
 ![React](https://img.shields.io/badge/frontend-React-blue) ![Flask](https://img.shields.io/badge/backend-Flask-red) ![License](https://img.shields.io/badge/license-MIT-green)
 
-This web application enables users to upload an image of an ID card and extract personal data like name, address, date of birth, and ID card number using Optical Character Recognition (OCR) technologies. The app leverages **React** for the frontend and **Flask** for the backend. It also supports multiple languages (Arabic, French), with integrated validation for better accuracy.
+This web application enables users to upload an image of an ID card and extract personal data like name, address, date of birth, and ID card number using Optical Character Recognition (OCR) technologies. The app leverages **React** for the frontend and **Flask** for the backend.
 
 ---
 
@@ -14,8 +14,6 @@ This web application enables users to upload an image of an ID card and extract 
   - Address
   - Date of Birth
   - ID Number
-- **Multi-language Support:** Supports both Arabic and French.
-- **Data Validation:** Verifies and corrects extracted text.
 - **Tech Stack:**
   - Frontend: **React**
   - Backend: **Flask**
@@ -37,8 +35,8 @@ Here’s what the app looks like:
 | **Frontend** | **Backend** | **OCR**        | **Database** |
 |--------------|-------------|----------------|--------------|
 | React        | Flask       | PaddlePaddle   | SQLite       |
-| HTML5/CSS3   | Python      | Tesseract (opt)| MySQL (opt)  |
-| JavaScript   | REST API    | TensorFlow (opt)| PostgreSQL (opt)|
+| HTML5/CSS3   | Python      | | MySQL (opt)  |
+| JavaScript   | REST API    | | PostgreSQL (opt)|
 
 ---
 
@@ -49,7 +47,7 @@ To run this project, you need:
 - **Python 3.8+** (for Flask)
 - **Node.js** (for React)
 - **pipenv** or **pip** for package management
-- **OCR Engines** (e.g., PaddlePaddle, Tesseract)
+- **OCR Engines** (PaddlePaddle)
   
 Check `requirements.txt` for Python dependencies.
 
@@ -61,8 +59,8 @@ Check `requirements.txt` for Python dependencies.
 
 1. **Clone the repository:**
     ```bash
-    git clone https://github.com/your-username/id-card-extraction-app.git
-    cd id-card-extraction-app/backend
+    git clone https://github.com/nahlibee/OCR-rex.git
+    cd OCR-rex/backend
     ```
 
 2. **Install the dependencies:**
@@ -110,5 +108,3 @@ Check `requirements.txt` for Python dependencies.
 ### View Extracted Data:
 
 - The app will display the extracted data (name, address, date of birth, ID number).
-
-
